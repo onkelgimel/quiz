@@ -26,7 +26,7 @@ namespace QuizzApp_1
     {
         public DebugView2()
         {
-            var Data = CSVParser.ParseCSVFile(@"U:\QuizzApp_1\quizzdb.csv");
+            var Data = CSVParser.ParseCSVFile(@"./quizzdb.csv");
             InitializeComponent();
             DataGrid1.ItemsSource = Data.Tables[0].DefaultView;
         }

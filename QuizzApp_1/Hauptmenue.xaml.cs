@@ -29,15 +29,10 @@ namespace QuizzApp_1
 
         private void Button_Start_Click(object sender, RoutedEventArgs e)
         {
-            //MainWindow.SetWindowContent(ref MainWindow.DebugView);
             GameView = new GameView();
+            MainWindow parentWindow = (MainWindow)Window.GetWindow(this);
 
-            Window parentWindow = Window.GetWindow(this);
-            parentWindow.
-            
-            Content = GameView;
-            //SetWindowContent(GameView);
-            //parentWindow.Content.content = DebugView2();
+            parentWindow.SetWindowContent(GameView);
         }
 
         private void Button_Beenden_Click(object sender, RoutedEventArgs e)
