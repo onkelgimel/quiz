@@ -2,4 +2,4 @@
 
 Schulprojekt fuer LF6
 
-[!alt text](hauptmenue.jpg)
+![Screenshot of Main Menu](hauptmenue.jpg)
