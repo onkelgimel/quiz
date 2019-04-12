@@ -26,29 +26,11 @@ namespace QuizzApp_1
     {
         public DebugView2()
         {
-            var Data = CSVParser.ParseCSVFile(@"./quizzdb.csv");
+            var Data = GameLogic.ParseCSVFile(@"./../../../quizzdb.csv");
+
             InitializeComponent();
             DataGrid1.ItemsSource = Data.Tables[0].DefaultView;
         }
     }
 
-    class CSVParser
-    {
-        public static DataSet ParseCSVFile(string FilePath)
-        {
-            DataSet ds = new DataSet("csvData");
-            string dir = System.IO.Path.GetDirectoryName(FilePath);
-            // HDR=YES wuerde die erste Zeile als Header einlesen
-            string connstr = String.Format("Provider = Microsoft.Jet.OleDb.4.0; Data Source={0}; Extended Properties = \"Text;HDR=NO;FMT=Delimited\"", dir);
-
-            using (System.Data.OleDb.OleDbConnection conn = new OleDbConnection(connstr))
-            {
-                conn.Open();
-                OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM " + System.IO.Path.GetFileName(FilePath), conn);
-                adapter.Fill(ds);
-            }
-
-            return ds; //<-- here is your data;
-        }
-    }
 }

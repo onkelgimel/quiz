@@ -59,6 +59,7 @@
     <Compile Include="DebugView2.xaml.cs">
       <DependentUpon>DebugView2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameLogic.cs" />
     <Compile Include="GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
