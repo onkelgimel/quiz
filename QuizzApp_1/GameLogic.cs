@@ -35,8 +35,12 @@ namespace QuizzApp_1
 
     class Frage
     {
-        public string Frage { get; }
-        public List<String> Antworten { get; }
-        public string Ant { get; }
+        // Die erste Antwort ist immer die richtige
+
+        public string Fragesatz { get; set; }
+        public List<String> Antworten { get; set; }
+        public uint RichtigeAntwortIndex { get; set; }
     }
+
+
 }

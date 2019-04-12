@@ -17,12 +17,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Content="Frage 1?"/>
+        <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Content="Frage 1?" FontSize="22"/>
 
-        <Button Grid.Row="1" Grid.Column="0" Content="Antwort 1"/>
-        <Button Grid.Row="1" Grid.Column="1" Content="Antwort 2"/>
-        <Button Grid.Row="2" Grid.Column="0" Content="Antwort 3"/>
-        <Button Grid.Row="2" Grid.Column="1" Content="Antwort 4"/>
+        <Button Name="BTN_Antwort1" Grid.Row="1" Grid.Column="0" Content="Antwort 1"/>
+        <Button Name="BTN_Antwort2" Grid.Row="1" Grid.Column="1" Content="Antwort 2"/>
+        <Button Name="BTN_Antwort3" Grid.Row="2" Grid.Column="0" Content="Antwort 3"/>
+        <Button Name="BTN_Antwort4" Grid.Row="2" Grid.Column="1" Content="Antwort 4"/>
         
     </Grid>
 </UserControl>
