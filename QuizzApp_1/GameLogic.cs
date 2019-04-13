@@ -14,6 +14,25 @@ namespace QuizzApp_1
     {
         public static uint gl_AnzahlFragen = 10;
 
+        public static List<Frage> GetQuestions()
+        {
+            var Data = ParseCSVFile(@"./../../../quizzdb.csv");
+            List<Frage> Liste = new List<Frage>();
+
+            foreach (DataRow Zeile in Data.Tables[0].Rows)
+            {
+                var Frage = new Frage
+                {
+                    Fragesatz = Zeile[0].ToString(),
+                    RichtigeAntwortIndex = 1
+                };
+
+                Liste.Add(Frage);
+            }
+
+            return Liste;
+        }
+
         public static DataSet ParseCSVFile(string FilePath)
         {
             DataSet ds = new DataSet("csvData");

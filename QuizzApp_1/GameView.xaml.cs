@@ -20,9 +20,34 @@ namespace QuizzApp_1
     /// </summary>
     public partial class GameView : UserControl
     {
+        // Haelt den Fortschritt des Benutzers fest, wieviele Fragen er schon beantwortet hat
+        // Das Spiel endet nach 10 beantworteten Fragen
+        private int QuestionsIndex = 0;
+        private List<Frage> QuestionList = GameLogic.GetQuestions();
+
         public GameView()
         {
             InitializeComponent();
+
+            NextQuestion();
+        }
+
+        private void NextQuestion()
+        {
+            LBL_Frage.Content    = QuestionList[QuestionsIndex].Fragesatz;
+            /*
+            BTN_Antwort1.Content = QuestionList[QuestionsIndex].Antworten[0];
+            BTN_Antwort2.Content = QuestionList[QuestionsIndex].Antworten[1];
+            BTN_Antwort3.Content = QuestionList[QuestionsIndex].Antworten[2];
+            BTN_Antwort4.Content = QuestionList[QuestionsIndex].Antworten[3];
+            */
+            StatusBarText.Text = string.Format("Frage {0}/{1}", QuestionsIndex + 1, QuestionList.Count);
+            QuestionsIndex++;
+        }
+
+        private void BTN_Antwort_Click(object sender, RoutedEventArgs e)
+        {
+            NextQuestion();
         }
     }
 }

@@ -11,18 +11,27 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
+            <RowDefinition Height="22"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Content="Frage 1?" FontSize="22"/>
+        <Label Name="LBL_Frage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Content="Frage 1?" FontSize="22"/>
 
-        <Button Name="BTN_Antwort1" Grid.Row="1" Grid.Column="0" Content="Antwort 1"/>
-        <Button Name="BTN_Antwort2" Grid.Row="1" Grid.Column="1" Content="Antwort 2"/>
-        <Button Name="BTN_Antwort3" Grid.Row="2" Grid.Column="0" Content="Antwort 3"/>
-        <Button Name="BTN_Antwort4" Grid.Row="2" Grid.Column="1" Content="Antwort 4"/>
-        
+        <Button Name="BTN_Antwort1" Grid.Row="1" Grid.Column="0" Content="Antwort 1" Click="BTN_Antwort_Click"/>
+        <Button Name="BTN_Antwort2" Grid.Row="1" Grid.Column="1" Content="Antwort 2" Click="BTN_Antwort_Click"/>
+        <Button Name="BTN_Antwort3" Grid.Row="2" Grid.Column="0" Content="Antwort 3" Click="BTN_Antwort_Click"/>
+        <Button Name="BTN_Antwort4" Grid.Row="2" Grid.Column="1" Content="Antwort 4" Click="BTN_Antwort_Click"/>
+
+        <DockPanel Grid.Row="3" Grid.ColumnSpan="2">
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <TextBlock Name="StatusBarText" Text="DEFAULT" VerticalAlignment="Center"/>
+                </StatusBarItem>
+            </StatusBar>
+        </DockPanel>
+
     </Grid>
 </UserControl>
