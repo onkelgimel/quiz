@@ -28,11 +28,10 @@ namespace QuizzApp_1
         public GameView()
         {
             InitializeComponent();
-
-            NextQuestion();
+            LoadQuestion();
         }
 
-        private void NextQuestion()
+        private void LoadQuestion()
         {
             LBL_Frage.Content    = QuestionList[QuestionsIndex].Fragesatz;
             /*
@@ -47,7 +46,7 @@ namespace QuizzApp_1
 
         private void BTN_Antwort_Click(object sender, RoutedEventArgs e)
         {
-            NextQuestion();
+            LoadQuestion();
         }
     }
 }

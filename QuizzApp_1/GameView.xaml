@@ -27,7 +27,7 @@
 
         <DockPanel Grid.Row="3" Grid.ColumnSpan="2">
             <StatusBar DockPanel.Dock="Bottom">
-                <StatusBarItem>
+                <StatusBarItem HorizontalAlignment="Right">
                     <TextBlock Name="StatusBarText" Text="DEFAULT" VerticalAlignment="Center"/>
                 </StatusBarItem>
             </StatusBar>

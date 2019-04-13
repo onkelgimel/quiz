@@ -23,8 +23,7 @@ namespace QuizzApp_1
             {
                 var Frage = new Frage
                 {
-                    Fragesatz = Zeile[0].ToString(),
-                    RichtigeAntwortIndex = 1
+                    Fragesatz = Zeile[0].ToString()
                 };
 
                 Liste.Add(Frage);
@@ -54,12 +53,11 @@ namespace QuizzApp_1
 
     class Frage
     {
-        // Die erste Antwort ist immer die richtige
-
         public string Fragesatz { get; set; }
-        public List<String> Antworten { get; set; }
-        public uint RichtigeAntwortIndex { get; set; }
-    }
+        public List<string> Antworten { get; set; }
 
+        // Die erste Antwort ist immer die richtige
+        public static uint RichtigeAntwortIndex { get; private set; } = 1;
+    }
 
 }
