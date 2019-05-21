@@ -30,6 +30,7 @@ namespace QuizzApp_1
 
             InitializeComponent();
             DataGrid1.ItemsSource = Data.Tables[0].DefaultView;
+           
         }
     }
 
