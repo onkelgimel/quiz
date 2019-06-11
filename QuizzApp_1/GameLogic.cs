@@ -21,9 +21,11 @@ namespace QuizzApp_1
 
             foreach (DataRow Zeile in Data.Tables[0].Rows)
             {
+
                 var Frage = new Frage
                 {
-                    Fragesatz = Zeile[0].ToString()
+                    Fragesatz = Zeile[0].ToString(),
+                    Antworten = new List<string> { Zeile[1].ToString(), Zeile[2].ToString(), Zeile[3].ToString(), Zeile[4].ToString() }
                 };
 
                 Liste.Add(Frage);
@@ -49,6 +51,22 @@ namespace QuizzApp_1
             return ds; //<-- here is your data;
         }
 
+        public static IEnumerable<int> UniqueRandom(int minInclusive, int maxInclusive)
+        {
+            List<int> candidates = new List<int>();
+            for (int i = minInclusive; i <= maxInclusive; i++)
+            {
+                candidates.Add(i);
+            }
+            Random rnd = new Random();
+            while (candidates.Count > 0)
+            {
+                int index = rnd.Next(candidates.Count);
+                yield return candidates[index];
+                candidates.RemoveAt(index);
+            }
+        }
+
     }
 
     class Frage
@@ -57,7 +75,7 @@ namespace QuizzApp_1
         public List<string> Antworten { get; set; }
 
         // Die erste Antwort ist immer die richtige
-        public static uint RichtigeAntwortIndex { get; private set; } = 1;
+        public int RichtigeAntwortIndex { get; set; } = 0;
     }
 
 }

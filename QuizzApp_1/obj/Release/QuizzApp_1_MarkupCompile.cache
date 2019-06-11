@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\jantari\Nextcloud\Programmieren\C#\quiz\QuizzApp_1\obj\Release\
+C:\Users\jantari\Source\Repos\quiz\QuizzApp_1\obj\Release\
 QuizzApp_1
 none
 false
 TRACE
-C:\Users\jantari\Nextcloud\Programmieren\C#\quiz\QuizzApp_1\App.xaml
-41560572405
+C:\Users\jantari\Source\Repos\quiz\QuizzApp_1\App.xaml
+5563640483
 
-9898629324
+10-609287552
 13-1142990016
-DebugView2.xaml;GameView.xaml;MainWindow.xaml;Hauptmenue.xaml;
+DebugView2.xaml;GameView.xaml;MainWindow.xaml;Hauptmenue.xaml;EndGameView.xaml;
 
-False
+True
 

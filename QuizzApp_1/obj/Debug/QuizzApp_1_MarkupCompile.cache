@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-c:\users\jantari\source\repos\QuizzApp_1\QuizzApp_1\obj\Debug\
+C:\Users\jantari\Source\Repos\quiz\QuizzApp_1\obj\Debug\
 QuizzApp_1
 none
 false
 DEBUG;TRACE
-c:\users\jantari\source\repos\QuizzApp_1\QuizzApp_1\App.xaml
-4-1279681185
+C:\Users\jantari\Source\Repos\quiz\QuizzApp_1\App.xaml
+5563640483
 
-8-2054634783
-131569487696
-DebugView2.xaml;GameView.xaml;MainWindow.xaml;UserControl1.xaml;
+10-609287552
+13-1142990016
+DebugView2.xaml;GameView.xaml;MainWindow.xaml;Hauptmenue.xaml;EndGameView.xaml;
 
 False
 

@@ -16,17 +16,14 @@ using System.Windows.Shapes;
 namespace QuizzApp_1
 {
     /// <summary>
-    /// Interaction logic for DebugView2.xaml
+    /// Interaction logic for EndGameView.xaml
     /// </summary>
-    public partial class DebugView2 : UserControl
+    public partial class EndGameView : UserControl
     {
-        public DebugView2()
+        public EndGameView(int SCORE)
         {
-            var Data = GameLogic.ParseCSVFile(@"./../../../quizzdb.csv");
-
             InitializeComponent();
-            DataGrid1.ItemsSource = Data.Tables[0].DefaultView;
+            LBL_playerScore.Content = string.Format("Erreichte Punkte: {0}", SCORE);
         }
     }
-
 }

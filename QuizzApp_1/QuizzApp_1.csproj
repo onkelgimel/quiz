@@ -66,6 +66,9 @@
     <Compile Include="Hauptmenue.xaml.cs">
       <DependentUpon>Hauptmenue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EndGameView.xaml.cs">
+      <DependentUpon>EndGameView.xaml</DependentUpon>
+    </Compile>
     <Page Include="DebugView2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -87,6 +90,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Hauptmenue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EndGameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
