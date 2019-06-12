@@ -20,10 +20,20 @@ namespace QuizzApp_1
     /// </summary>
     public partial class EndGameView : UserControl
     {
+        public FrameworkElement GameView { get; set; }
+
         public EndGameView(int SCORE)
         {
             InitializeComponent();
             LBL_playerScore.Content = string.Format("Erreichte Punkte: {0}", SCORE);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GameView = new GameView();
+            MainWindow parentWindow = (MainWindow)Window.GetWindow(this);
+
+            parentWindow.SetWindowContent(GameView);
         }
     }
 }

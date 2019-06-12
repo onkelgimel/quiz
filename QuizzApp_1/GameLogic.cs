@@ -12,8 +12,6 @@ namespace QuizzApp_1
 {
     class GameLogic
     {
-        public static uint gl_AnzahlFragen = 10;
-
         public static List<Frage> GetQuestions()
         {
             var Data = ParseCSVFile(@"./../../../quizzdb.csv");

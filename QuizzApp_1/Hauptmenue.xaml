@@ -10,19 +10,23 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                <Label Content="QuizzApp 1"                      HorizontalAlignment="Center" FontSize="28"/>
+                <Label Content="von Oleg, Arien, Jan und Lorenz" HorizontalAlignment="Center"              />
+            </StackPanel>
             
-            <Label Grid.Column="1" Content="QuizzApp 1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom">
-                <Button Name="Button_Start"   Content="Start"   Click="Button_Start_Click"   FontSize="22" Margin="0,0,0,5"/>
-                <Button Name="Button_Beenden" Content="Beenden" Click="Button_Beenden_Click" FontSize="22" />
+                <Button Name="Button_Start"   Content="Start"   Click="Button_Start_Click"   FontSize="22" Margin="0,0,0,7"/>
+                <Button Name="Button_Beenden" Content="Beenden" Click="Button_Beenden_Click" FontSize="22"                 />
             </StackPanel>
             
         </Grid>
