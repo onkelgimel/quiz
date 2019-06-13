@@ -29,12 +29,20 @@ namespace QuizzApp_1
         public int PlayerScore           = 0;
         private List<Frage> QuestionList = GameLogic.GetQuestions();
         private List<Button> AnswerButtons;
+        public class ButtonFlashInColor
+        {
+            public string ColorName { get; set; }
+        }
+        public ButtonFlashInColor ButtonColor = new ButtonFlashInColor { ColorName = "Green" };
         public FrameworkElement EndGameView { get; set; }
 
         public GameView()
         {
             InitializeComponent();
+            
+            this.DataContext = ButtonColor;
             AnswerButtons = new List<Button> { BTN_Antwort1, BTN_Antwort2, BTN_Antwort3, BTN_Antwort4 };
+
             LoadQuestion();
         }
 
@@ -58,8 +66,11 @@ namespace QuizzApp_1
             Button clickedButton = sender as Button;
             if ((string)clickedButton.Content == QuestionList[QuestionsIndex].Antworten[0])
             {
+                ButtonColor.ColorName = "Green";
                 PlayerScore++;
-             //   ButtonAnimation(ref clickedButton);
+                //ButtonAnimation(ref clickedButton);
+            } else {
+                ButtonColor.ColorName = "Red";
             }
 
             if (QuestionsIndex < QuestionList.Count - 1) {
