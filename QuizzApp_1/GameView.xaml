@@ -6,6 +6,29 @@
              xmlns:local="clr-namespace:QuizzApp_1"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    <!-- Button ContronTemplate Override um den Standard-Hover-Effekt von WPF Buttons loszuwerden (Blaue Faerbung) -->
+    <UserControl.Resources>
+        <Style x:Key="NoHoverEffectButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="1" BorderBrush="Gray" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="5*"/>
@@ -20,50 +43,10 @@
 
         <TextBlock Name="TXTBLK_Frage" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="22" TextWrapping="Wrap"/>
 
-        <Button Name="BTN_Antwort1" Grid.Row="1" Grid.Column="0" Content="Antwort 1" Click="BTN_Antwort_Click" FontSize="18">
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation From="Green" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" FillBehavior="Stop" Duration="0:0:1" Completed="ColorAnimation_Completed"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-        <Button Name="BTN_Antwort2" Grid.Row="1" Grid.Column="1" Content="Antwort 2" Click="BTN_Antwort_Click" FontSize="18">
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation From="Green" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" FillBehavior="Stop" Duration="0:0:1" Completed="ColorAnimation_Completed"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-        <Button Name="BTN_Antwort3" Grid.Row="2" Grid.Column="0" Content="Antwort 3" Click="BTN_Antwort_Click" FontSize="18">
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation From="Green" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" FillBehavior="Stop" Duration="0:0:1" Completed="ColorAnimation_Completed"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
-        <Button Name="BTN_Antwort4" Grid.Row="2" Grid.Column="1" Content="Antwort 4" Click="BTN_Antwort_Click" FontSize="18">
-            <Button.Triggers>
-                <EventTrigger RoutedEvent="Button.Click">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation From="{Binding ColorName, Mode = OneWay}" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" FillBehavior="Stop" Duration="0:0:1" Completed="ColorAnimation_Completed"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Button.Triggers>
-        </Button>
+        <Button Name="BTN_Antwort1" Grid.Row="1" Grid.Column="0" Content="Antwort 1" Click="BTN_Antwort_Click" FontSize="18" Style="{StaticResource NoHoverEffectButton}"/>
+        <Button Name="BTN_Antwort2" Grid.Row="1" Grid.Column="1" Content="Antwort 2" Click="BTN_Antwort_Click" FontSize="18" Style="{StaticResource NoHoverEffectButton}"/>
+        <Button Name="BTN_Antwort3" Grid.Row="2" Grid.Column="0" Content="Antwort 3" Click="BTN_Antwort_Click" FontSize="18" Style="{StaticResource NoHoverEffectButton}"/>
+        <Button Name="BTN_Antwort4" Grid.Row="2" Grid.Column="1" Content="Antwort 4" Click="BTN_Antwort_Click" FontSize="18" Style="{StaticResource NoHoverEffectButton}"/>
 
         <DockPanel Grid.Row="3" Grid.ColumnSpan="2">
             <StatusBar DockPanel.Dock="Bottom">

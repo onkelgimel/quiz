@@ -24,24 +24,28 @@ namespace QuizzApp_1
     public partial class GameView : UserControl
     {
         // Haelt den Fortschritt des Benutzers fest, wieviele Fragen er schon beantwortet hat
-        // Das Spiel endet nach 10 beantworteten Fragen
+        // Das Spiel endet nach dem alle Fragen beantwortet wurden
         private int QuestionsIndex       = 0;
-        public int PlayerScore           = 0;
+        public  int PlayerScore          = 0;
         private List<Frage> QuestionList = GameLogic.GetQuestions(10);
         private List<Button> AnswerButtons;
-        public class ButtonFlashInColor
-        {
-            public string ColorName { get; set; }
-        }
-        public ButtonFlashInColor ButtonColor = new ButtonFlashInColor { ColorName = "Green" };
+
         public FrameworkElement EndGameView { get; set; }
+        public ColorAnimation FlashButtonGreen = new ColorAnimation { From = Colors.Green, Duration = new Duration(TimeSpan.FromMilliseconds(1200)), FillBehavior = FillBehavior.Stop };
+        public ColorAnimation FlashButtonRed   = new ColorAnimation { From = Colors.Red  , Duration = new Duration(TimeSpan.FromMilliseconds(1200)), FillBehavior = FillBehavior.Stop };
+        public Storyboard CellBackgroundChangeStory = new Storyboard();
 
         public GameView()
         {
             InitializeComponent();
             
-            this.DataContext = ButtonColor;
-            AnswerButtons = new List<Button> { BTN_Antwort1, BTN_Antwort2, BTN_Antwort3, BTN_Antwort4 };
+            BTN_Antwort1.Background    = new SolidColorBrush(Colors.LightGray);
+            BTN_Antwort2.Background    = new SolidColorBrush(Colors.LightGray);
+            BTN_Antwort3.Background    = new SolidColorBrush(Colors.LightGray);
+            BTN_Antwort4.Background    = new SolidColorBrush(Colors.LightGray);
+            AnswerButtons              = new List<Button> { BTN_Antwort1, BTN_Antwort2, BTN_Antwort3, BTN_Antwort4 };
+            FlashButtonGreen.Completed += ColorAnimation_Completed;
+            FlashButtonRed.Completed   += ColorAnimation_Completed;
 
             LoadQuestion();
         }
@@ -52,8 +56,6 @@ namespace QuizzApp_1
             var RandomizedOrder = GameLogic.UniqueRandom(0, 3).ToList();
 
             AnswerButtons[RandomizedOrder[0]].Content = QuestionList[QuestionsIndex].Antworten[0]; // CORRECT ANSWER
-            //AnswerButtons[RandomizedOrder[0]].Triggers[0]
-            //BTN_Antwort1_Animation.From = 
             AnswerButtons[RandomizedOrder[1]].Content = QuestionList[QuestionsIndex].Antworten[1];
             AnswerButtons[RandomizedOrder[2]].Content = QuestionList[QuestionsIndex].Antworten[2];
             AnswerButtons[RandomizedOrder[3]].Content = QuestionList[QuestionsIndex].Antworten[3];
@@ -66,17 +68,15 @@ namespace QuizzApp_1
             Button clickedButton = sender as Button;
             if ((string)clickedButton.Content == QuestionList[QuestionsIndex].Antworten[0])
             {
-                ButtonColor.ColorName = "Green";
                 PlayerScore++;
-                //ButtonAnimation(ref clickedButton);
+                clickedButton.Background.BeginAnimation(SolidColorBrush.ColorProperty, FlashButtonGreen);
             } else {
-                ButtonColor.ColorName = "Red";
+                clickedButton.Background.BeginAnimation(SolidColorBrush.ColorProperty, FlashButtonRed);
             }
 
             if (QuestionsIndex < QuestionList.Count - 1) {
                 // Wenn nicht die letzte Frage erreicht ist, naechste Frage laden
                 QuestionsIndex++;
-                //LoadQuestion();
             } else {
                 // Wenn die letzte Frage erreicht war, EndGame Bildschirm anzeigen
                 EndGameView = new EndGameView(PlayerScore);
