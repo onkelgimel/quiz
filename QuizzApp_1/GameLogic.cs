@@ -12,23 +12,34 @@ namespace QuizzApp_1
 {
     class GameLogic
     {
-        public static List<Frage> GetQuestions()
+        public static List<Frage> GetQuestions(int Amount)
         {
             var Data = ParseCSVFile(@"../../../quizzdb.csv");
             List<Frage> Liste = new List<Frage>();
 
-            foreach (DataRow Zeile in Data.Tables[0].Rows)
+            // Get Amount-many Random numbers from 0 to the amount of available questions
+            if (Amount >= Data.Tables[0].Rows.Count)
             {
-
-                var Frage = new Frage
-                {
-                    Fragesatz = Zeile[0].ToString(),
-                    Antworten = new List<string> { Zeile[1].ToString(), Zeile[2].ToString(), Zeile[3].ToString(), Zeile[4].ToString() }
-                };
-
-                Liste.Add(Frage);
+                Amount = Data.Tables[0].Rows.Count;
             }
+            var QuestionsToGet = UniqueRandom(0, Data.Tables[0].Rows.Count - 1).ToList().GetRange(0, Amount);
 
+            foreach (var i in QuestionsToGet)
+            {
+                if (Amount > 0)
+                {
+                    var FragenDaten = Data.Tables[0].Rows[i];
+                    var Frage = new Frage
+                    {
+                        Fragesatz = FragenDaten[0].ToString(),
+                        Antworten = new List<string> { FragenDaten[1].ToString(), FragenDaten[2].ToString(), FragenDaten[2].ToString(), FragenDaten[3].ToString() }
+                    };
+
+                    Liste.Add(Frage);
+                    Amount--;
+                }
+            }
+            
             return Liste;
         }
 

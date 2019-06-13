@@ -27,7 +27,7 @@ namespace QuizzApp_1
         // Das Spiel endet nach 10 beantworteten Fragen
         private int QuestionsIndex       = 0;
         public int PlayerScore           = 0;
-        private List<Frage> QuestionList = GameLogic.GetQuestions();
+        private List<Frage> QuestionList = GameLogic.GetQuestions(10);
         private List<Button> AnswerButtons;
         public class ButtonFlashInColor
         {
