@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Threading;
+using System.Windows.Media.Animation;
+
 namespace QuizzApp_1
 {
     /// <summary>
@@ -37,35 +40,43 @@ namespace QuizzApp_1
 
         private void LoadQuestion()
         {
-            LBL_Frage.Content   = QuestionList[QuestionsIndex].Fragesatz;
+            TXTBLK_Frage.Text   = QuestionList[QuestionsIndex].Fragesatz;
             var RandomizedOrder = GameLogic.UniqueRandom(0, 3).ToList();
 
             AnswerButtons[RandomizedOrder[0]].Content = QuestionList[QuestionsIndex].Antworten[0]; // CORRECT ANSWER
+            //AnswerButtons[RandomizedOrder[0]].Triggers[0]
+            //BTN_Antwort1_Animation.From = 
             AnswerButtons[RandomizedOrder[1]].Content = QuestionList[QuestionsIndex].Antworten[1];
             AnswerButtons[RandomizedOrder[2]].Content = QuestionList[QuestionsIndex].Antworten[2];
             AnswerButtons[RandomizedOrder[3]].Content = QuestionList[QuestionsIndex].Antworten[3];
 
-            StatusBarText.Text = string.Format("{2} -- Frage {0}/{1}", QuestionsIndex + 1, QuestionList.Count, RandomizedOrder[0] );
+            StatusBarText.Text = string.Format("Frage {0}/{1}", QuestionsIndex + 1, QuestionList.Count );
         }
 
         private void BTN_Antwort_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
-            if (clickedButton.Content == QuestionList[QuestionsIndex].Antworten[0])
+            if ((string)clickedButton.Content == QuestionList[QuestionsIndex].Antworten[0])
             {
                 PlayerScore++;
+             //   ButtonAnimation(ref clickedButton);
             }
 
             if (QuestionsIndex < QuestionList.Count - 1) {
                 // Wenn nicht die letzte Frage erreicht ist, naechste Frage laden
                 QuestionsIndex++;
-                LoadQuestion();
+                //LoadQuestion();
             } else {
                 // Wenn die letzte Frage erreicht war, EndGame Bildschirm anzeigen
                 EndGameView = new EndGameView(PlayerScore);
                 MainWindow parentWindow = (MainWindow)Window.GetWindow(this);
                 parentWindow.SetWindowContent(EndGameView);
             }
+        }
+
+        private void ColorAnimation_Completed(object sender, EventArgs e)
+        {
+            LoadQuestion();
         }
     }
 }

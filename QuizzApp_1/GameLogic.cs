@@ -14,7 +14,7 @@ namespace QuizzApp_1
     {
         public static List<Frage> GetQuestions()
         {
-            var Data = ParseCSVFile(@"./../../../quizzdb.csv");
+            var Data = ParseCSVFile(@"../../../quizzdb.csv");
             List<Frage> Liste = new List<Frage>();
 
             foreach (DataRow Zeile in Data.Tables[0].Rows)

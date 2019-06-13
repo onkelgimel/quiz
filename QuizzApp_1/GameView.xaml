@@ -18,9 +18,19 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Name="LBL_Frage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.ColumnSpan="2" Content="Frage 1?" FontSize="22"/>
+        <TextBlock Name="TXTBLK_Frage" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" FontSize="22" TextWrapping="Wrap"/>
 
-        <Button Name="BTN_Antwort1" Grid.Row="1" Grid.Column="0" Content="Antwort 1" Click="BTN_Antwort_Click" FontSize="18"/>
+        <Button Name="BTN_Antwort1" Grid.Row="1" Grid.Column="0" Content="Antwort 1" Click="BTN_Antwort_Click" FontSize="18">
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Click">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation From="Green" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" FillBehavior="Stop" Duration="0:0:1" Completed="ColorAnimation_Completed"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
         <Button Name="BTN_Antwort2" Grid.Row="1" Grid.Column="1" Content="Antwort 2" Click="BTN_Antwort_Click" FontSize="18"/>
         <Button Name="BTN_Antwort3" Grid.Row="2" Grid.Column="0" Content="Antwort 3" Click="BTN_Antwort_Click" FontSize="18"/>
         <Button Name="BTN_Antwort4" Grid.Row="2" Grid.Column="1" Content="Antwort 4" Click="BTN_Antwort_Click" FontSize="18"/>
