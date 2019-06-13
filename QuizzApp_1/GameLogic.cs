@@ -32,7 +32,7 @@ namespace QuizzApp_1
                     var Frage = new Frage
                     {
                         Fragesatz = FragenDaten[0].ToString(),
-                        Antworten = new List<string> { FragenDaten[1].ToString(), FragenDaten[2].ToString(), FragenDaten[2].ToString(), FragenDaten[3].ToString() }
+                        Antworten = new List<string> { FragenDaten[1].ToString(), FragenDaten[2].ToString(), FragenDaten[3].ToString(), FragenDaten[4].ToString() }
                     };
 
                     Liste.Add(Frage);
