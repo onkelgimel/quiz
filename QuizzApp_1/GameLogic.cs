@@ -24,6 +24,8 @@ namespace QuizzApp_1
             }
             var QuestionsToGet = UniqueRandom(0, Data.Tables[0].Rows.Count - 1).ToList().GetRange(0, Amount);
 
+            // i ist der Index in das Array aller moeglichen Fragen die in der CSV enthalten sind.
+            // Da die Zahlen in QuestionsToGet zufaellig sind holen wir uns hier Fragen von zufaelligen Positionen
             foreach (var i in QuestionsToGet)
             {
                 if (Amount > 0)
@@ -60,6 +62,7 @@ namespace QuizzApp_1
             return ds; //<-- here is your data;
         }
 
+        // Alle Zahlen zwischen min und max zurueckgeben, aber in zufaelliger Reihenfolge
         public static IEnumerable<int> UniqueRandom(int minInclusive, int maxInclusive)
         {
             List<int> candidates = new List<int>();
@@ -82,9 +85,6 @@ namespace QuizzApp_1
     {
         public string Fragesatz { get; set; }
         public List<string> Antworten { get; set; }
-
-        // Die erste Antwort ist immer die richtige
-        public int RichtigeAntwortIndex { get; set; } = 0;
     }
 
 }
