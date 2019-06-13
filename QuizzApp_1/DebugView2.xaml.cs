@@ -22,7 +22,7 @@ namespace QuizzApp_1
     {
         public DebugView2()
         {
-            var Data = GameLogic.ParseCSVFile(@"./../../../quizzdb.csv");
+            var Data = GameLogic.ParseCSVFile(@"quizzdb.csv");
 
             InitializeComponent();
             DataGrid1.ItemsSource = Data.Tables[0].DefaultView;

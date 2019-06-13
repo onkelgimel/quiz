@@ -14,7 +14,8 @@ namespace QuizzApp_1
     {
         public static List<Frage> GetQuestions(int Amount)
         {
-            var Data = ParseCSVFile(@"../../../quizzdb.csv");
+            var Data = ParseCSVFile(@"quizzdb.csv");
+            //var Data = ParseCSVFile(@"../../../quizzdb.csv");
             List<Frage> Liste = new List<Frage>();
 
             // Get Amount-many Random numbers from 0 to the amount of available questions
@@ -45,21 +46,22 @@ namespace QuizzApp_1
             return Liste;
         }
 
-        public static DataSet ParseCSVFile(string FilePath)
+        public static DataSet ParseCSVFile(string FileName)
         {
             DataSet ds = new DataSet("csvData");
-            string dir = System.IO.Path.GetDirectoryName(FilePath);
+            string progExePath  = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string progRootPath = System.IO.Directory.GetParent(progExePath).FullName;
             // HDR=YES wuerde die erste Zeile als Header einlesen
-            string connstr = String.Format("Provider = Microsoft.Jet.OleDb.4.0; Data Source={0}; Extended Properties = \"Text;HDR=NO;FMT=Delimited\"", dir);
+            string connstr = String.Format("Provider = Microsoft.Jet.OleDb.4.0; Data Source={0}; Extended Properties = \"Text;HDR=NO;FMT=Delimited\"", progRootPath);
 
             using (System.Data.OleDb.OleDbConnection conn = new OleDbConnection(connstr))
             {
                 conn.Open();
-                OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM " + System.IO.Path.GetFileName(FilePath), conn);
+                OleDbDataAdapter adapter = new OleDbDataAdapter("SELECT * FROM " + FileName, conn);
                 adapter.Fill(ds);
             }
 
-            return ds; //<-- here is your data;
+            return ds;
         }
 
         // Alle Zahlen zwischen min und max zurueckgeben, aber in zufaelliger Reihenfolge
