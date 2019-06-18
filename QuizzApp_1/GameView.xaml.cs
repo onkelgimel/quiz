@@ -74,20 +74,22 @@ namespace QuizzApp_1
                 clickedButton.Background.BeginAnimation(SolidColorBrush.ColorProperty, FlashButtonRed);
             }
 
-            if (QuestionsIndex < QuestionList.Count - 1) {
+        }
+
+
+        private void ColorAnimation_Completed(object sender, EventArgs e)
+        {
+            if (QuestionsIndex < QuestionList.Count - 1)
+            {
                 // Wenn nicht die letzte Frage erreicht ist, naechste Frage laden
                 QuestionsIndex++;
+                LoadQuestion();
             } else {
                 // Wenn die letzte Frage erreicht war, EndGame Bildschirm anzeigen
                 EndGameView = new EndGameView(PlayerScore);
                 MainWindow parentWindow = (MainWindow)Window.GetWindow(this);
                 parentWindow.SetWindowContent(EndGameView);
             }
-        }
-
-        private void ColorAnimation_Completed(object sender, EventArgs e)
-        {
-            LoadQuestion();
         }
     }
 }
