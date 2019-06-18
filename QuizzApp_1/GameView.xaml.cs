@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using System.Threading;
 using System.Windows.Media.Animation;
 
 namespace QuizzApp_1
@@ -26,14 +25,13 @@ namespace QuizzApp_1
         // Haelt den Fortschritt des Benutzers fest, wieviele Fragen er schon beantwortet hat
         // Das Spiel endet nach dem alle Fragen beantwortet wurden
         private int QuestionsIndex       = 0;
-        public  int PlayerScore          = 0;
+        private int PlayerScore          = 0;
         private List<Frage> QuestionList = GameLogic.GetQuestions(10);
         private List<Button> AnswerButtons;
 
         public FrameworkElement EndGameView { get; set; }
         public ColorAnimation FlashButtonGreen = new ColorAnimation { From = Colors.Green, Duration = new Duration(TimeSpan.FromMilliseconds(1200)), FillBehavior = FillBehavior.Stop };
         public ColorAnimation FlashButtonRed   = new ColorAnimation { From = Colors.Red  , Duration = new Duration(TimeSpan.FromMilliseconds(1200)), FillBehavior = FillBehavior.Stop };
-        public Storyboard CellBackgroundChangeStory = new Storyboard();
 
         public GameView()
         {
